@@ -1,0 +1,20 @@
+version: '3.7'
+networks:
+  github:
+    name: github
+    driver: bridge
+
+services:
+
+  php:
+    image: likesistemas/php-dev:${PHP_VERSION:-56}
+    environment:
+      - CODECOMMIT_HOST=git-codecommit.us-east-1.amazonaws.com
+      - GITHUB_TOKEN=$GITHUB_TOKEN
+      - CODECOMMIT_USER=$CODECOMMIT_USER
+      - CODECOMMIT_PASSWORD=$CODECOMMIT_PASSWORD
+      - URL_SENTRY=${URL_SENTRY}
+    volumes:
+      - ./:/var/www/public/
+    networks:
+      - github

@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+
+jobs:
+  
+  test:
+    strategy:
+      matrix:
+        PHP: [56, 73, 74, 80]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Prepare code
+        env:
+          PHP_VERSION: ${{ matrix.PHP }}
+        run: |
+          touch .env
+          echo "CODECOMMIT_USER=${{ secrets.CODECOMMIT_USER }}" >> .env
+          echo "CODECOMMIT_PASSWORD=${{ secrets.CODECOMMIT_PASSWORD }}" >> .env
+          echo "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> .env
+          echo "PHP_VERSION=$PHP_VERSION" >> .env
+
+      - name: Prepare environment
+        run: |
+          docker-compose up -d
+          echo $(docker run -t --network github jwilder/dockerize -wait tcp://php:9000 -timeout 120s)
+          docker-compose ps
+          docker-compose logs php
+
+      - name: Install PHP Stan
+        if: matrix.PHP != '56'
+        run: |
+          docker-compose exec -T php composer require phpstan/phpstan --dev
+
+      - name: Run PHP Unit
+        run: |
+          docker-compose exec -T php composer test
+
+      - name: Run PHP Stan
+        if: matrix.PHP != '56'
+        run: |
+          docker-compose exec -T php composer analyse
+
+      - name: Run PHP CS Fixer
+        if: matrix.PHP != '56'
+        run: |
+          docker-compose exec -T php composer fix:ci

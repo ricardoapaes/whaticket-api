@@ -1,0 +1,12 @@
+{
+    "files.encoding": "iso88591",
+    "[php]": {
+        "editor.defaultFormatter": "junstyle.php-cs-fixer"
+    },
+    "[json]": {
+        "files.encoding": "utf8",
+    },
+    "php-cs-fixer.onsave": true,
+    "php-cs-fixer.showOutput": false,
+    "php-cs-fixer.autoFixByBracket": true
+}
