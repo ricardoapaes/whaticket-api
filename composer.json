@@ -1,31 +1,30 @@
 {
-    "name": "likesistemas/nomedalib",
+    "name": "ricardoapaes/whaticket-api",
     "type": "library",
-    "description": "Descriçãoo da biblioteca.",
-    "repositories": [
-        {"type": "composer", "url": "https://composer.likesistemas.com.br/"}
-    ],
+    "description": "Communication with whatsapp api.",
     "require": {
-        "php": ">=5.6"
+        "php": ">=5.6",
+        "ext-curl": "*",
+        "guzzlehttp/guzzle": "^6.0 | ^7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.0 || ^9.0"
     },
     "autoload": {
         "psr-4": {
-            "Like\\NomeDaLib\\": "src/"
+            "RicardoPaes\\Whaticket\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Like\\NomeDaLib\\Tests\\": "tests/"
+            "RicardoPaes\\Whaticket\\Tests\\": "tests/"
         }
     },
     "authors": [
         {
-            "name": "Like Sistemas",
-            "email": "dev@likesistemas.com.br",
-            "homepage": "https://www.likesistemas.com.br/"
+            "name": "Ricardo Araújo Paes",
+            "email": "ricardo@rpaes.com.br",
+            "homepage": "https://www.rpaes.com.br/"
         }
     ],
     "scripts": {

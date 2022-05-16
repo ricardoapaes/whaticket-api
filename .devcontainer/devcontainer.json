@@ -1,5 +1,5 @@
 {
-	"name": "like/composer-empty",
+	"name": "whaticket-api",
 	"dockerComposeFile": [
 		"../docker-compose.yml"
 	],

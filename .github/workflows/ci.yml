@@ -23,9 +23,10 @@ jobs:
           PHP_VERSION: ${{ matrix.PHP }}
         run: |
           touch .env
-          echo "CODECOMMIT_USER=${{ secrets.CODECOMMIT_USER }}" >> .env
-          echo "CODECOMMIT_PASSWORD=${{ secrets.CODECOMMIT_PASSWORD }}" >> .env
-          echo "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> .env
+          echo "WHATICKET_BASEURL=${{ secrets.WHATICKET_BASEURL }}" >> .env
+          echo "WHATICKET_TOKEN=${{ secrets.WHATICKET_TOKEN }}" >> .env
+          echo "WHATICKET_NUMBER=${{ secrets.WHATICKET_NUMBER }}" >> .env
+          echo "WHATICKET_ID=${{ secrets.WHATICKET_ID }}" >> .env
           echo "PHP_VERSION=$PHP_VERSION" >> .env
 
       - name: Prepare environment
