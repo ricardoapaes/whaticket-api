@@ -23,10 +23,10 @@ jobs:
           PHP_VERSION: ${{ matrix.PHP }}
         run: |
           touch .env
-          echo "WHATICKET_BASEURL=${ secrets.WHATICKET_BASEURL }" >> .env
-          echo "WHATICKET_TOKEN=${ secrets.WHATICKET_TOKEN }" >> .env
-          echo "WHATICKET_NUMBER=${ secrets.WHATICKET_NUMBER }" >> .env
-          echo "WHATICKET_ID=${ secrets.WHATICKET_ID }" >> .env
+          echo "WHATICKET_BASEURL=${{ secrets.WHATICKET_BASEURL }}" >> .env
+          echo "WHATICKET_TOKEN=${{ secrets.WHATICKET_TOKEN }}" >> .env
+          echo "WHATICKET_NUMBER=${{ secrets.WHATICKET_NUMBER }}" >> .env
+          echo "WHATICKET_ID=${{ secrets.WHATICKET_ID }}" >> .env
           echo "PHP_VERSION=$PHP_VERSION" >> .env
 
       - name: Prepare environment
