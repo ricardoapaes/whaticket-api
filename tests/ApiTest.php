@@ -5,7 +5,7 @@ namespace RicardoPaes\Whaticket\Tests;
 use PHPUnit\Framework\TestCase;
 use RicardoPaes\Whaticket\Api;
 
-class WhaticketTest extends TestCase {
+class ApiTest extends TestCase {
 	public function testInstance() {
 		$this->assertTrue(class_exists(Api::class));
 	}

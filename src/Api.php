@@ -26,6 +26,7 @@ class Api {
 	public function __construct($url, $token) {
 		$this->client = new Client([
 			'base_uri' => $url,
+			'verify' => false
 		]);
 		$this->token = $token;
 	}
